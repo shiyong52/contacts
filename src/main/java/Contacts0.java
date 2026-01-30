@@ -3,14 +3,12 @@ import java.util.Scanner;
 
 public class Contacts0 {
 
+    public static final int MAX = 100;
+
     public static void main(String[] args) {
         final Scanner SCANNER = new Scanner(System.in);
-        System.out.println("|| ===================================================");
-        System.out.println("|| ===================================================");
-        System.out.println("|| Contacts - Version 0.0");
-        System.out.println("|| Welcome to Contacts!");
-        System.out.println("|| ===================================================");
-        String[][] list = new String[100][3];
+        showWelcomeMessage();
+        String[][] list = new String[MAX][3];
         int count = 0;
         while (true) {
             System.out.print("|| " + "Enter command: ");
@@ -76,6 +74,7 @@ public class Contacts0 {
                         decodeResult[0], decodeResult[1], decodeResult[2]);
                 break;
             case "list":
+                String feedback1;
                 String[][] toBeDisplayed = list;
                 final StringBuilder messageAccumulator = new StringBuilder();
                 for (int i = 0; i < count; i++) {
@@ -86,10 +85,11 @@ public class Contacts0 {
                             .append(System.lineSeparator()).append("|| ");
                 }
                 String listAsString = messageAccumulator.toString();
-                for (String m1 : new String[]{listAsString}) {
-                    System.out.println("|| " + m1);
+                for (String m2 : new String[]{listAsString}) {
+                    System.out.println("|| " + m2);
                 }
-                feedback = String.format("%1$d persons found!", count);
+                feedback1 = String.format("%1$d persons found!", count);
+                feedback = feedback1;
                 break;
             case "clear":
                 list = new String[100][3];
@@ -144,5 +144,13 @@ public class Contacts0 {
                 System.out.println("|| " + m);
             }
         }
+    }
+
+    private static void showWelcomeMessage() {
+        System.out.println("|| ===================================================");
+        System.out.println("|| ===================================================");
+        System.out.println("|| Contacts - Version 0.0");
+        System.out.println("|| Welcome to Contacts!");
+        System.out.println("|| ===================================================");
     }
 }
